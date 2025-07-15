@@ -26,4 +26,5 @@ Installation
 Eventually will be published on PyPl. Currently download the repo and run
 
 .. code-block:: none
+
     pip install <path to root of this repo>
