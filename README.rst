@@ -13,8 +13,8 @@ BSD-3 license, (C) 2025 WiSELab-CMU
 
 Documentation
 -------------
-For API documentation, usage and examples, see the files in the "documentation" directory (does not exist yet. Rely
-on the help function in Python). The ".rst" files can be read in any text editor or being converted to HTML or PDF
+For API documentation, usage and examples, see the files in the "Documentation" directory. 
+The ".rst" files can be read in any text editor or being converted to HTML or PDF
 using Sphinx.
 
 Examples
