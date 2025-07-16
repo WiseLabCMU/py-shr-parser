@@ -14,5 +14,6 @@ documentation for details.
 .. toctree::
    :maxdepth: 2
 
+   pyshrparser
    pyshrparser_api
 
