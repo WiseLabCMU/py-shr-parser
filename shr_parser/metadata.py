@@ -21,6 +21,7 @@ class ShrFileHeader:
         rbw_hz (float): Resolution bandwidth (Hz).
         vbw_hz (float): Video bandwidth (Hz).
         ref_level (float): The ADC reference level (dBm/mV depending on scale)
+        ref_scale (ShrScale): The ADC reference scale.
         div (float): The division scale for the spectrum graph (dB). This is used by Spike to show the grid on the
         horizontal scale. For example, if the reference level is set to -20dB and has a div of 10dB, then grid lines
         will be shown at -30dB, -40dB, and so on.

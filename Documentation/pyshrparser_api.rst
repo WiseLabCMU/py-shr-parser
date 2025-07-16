@@ -178,3 +178,189 @@ Classes
         :type: np.float32
 
         Return the sweep data maximum value.
+
+.. class:: ShrFileHeader
+
+    .. attribute:: signature
+
+        :type: int
+
+        The file signature.
+
+    .. attribute:: version
+
+        :type: int
+
+        The SHR format version.
+
+    .. attribute:: data_offset
+
+        :type: int
+
+        Byte offset where the sweep data starts.
+
+    .. attribute:: title
+
+        :type: bytes
+
+        Title of the file.
+
+    Sweep Parameters:
+
+    .. attribute:: sweep_count
+
+        :type: int
+
+        The number of sweeps performed.
+
+    .. attribute:: sweep_length
+
+        :type: int
+
+        Number of entries in each sweep.
+
+    .. attribute:: first_bin_freq_hz
+
+        :type: float
+
+        Sweep start frequency (Hz).
+
+    .. attribute:: bin_size_hz
+
+        :type: float
+
+        Bandwidth of each bin (Hz).
+
+    Device configuration at time of capture:
+
+    .. attribute:: center_freq_hz
+
+        :type: float
+
+        The center frequency of the captured data (Hz).
+
+    .. attribute:: span_hz
+
+        :type: float
+
+        Span of frequency being evaluated (Hz).
+
+    .. attribute:: rbw_hz
+
+        :type: float
+
+        Resolution bandwidth (Hz).
+
+    .. attribute::  vbw_hz
+
+        :type: float
+
+        Video bandwidth (Hz).
+
+    .. attribute:: ref_level
+
+        :type: float
+
+        The ADC reference level (dBm/mV depending on scale).
+
+    .. attribute:: ref_scale
+
+        :type: ShrScale
+
+        The ADC reference scale.
+
+    .. attribute:: div
+
+        :type: float
+
+        The division scale for the spectrum graph (dB). This is used by Spike to show the grid on the
+        horizontal scale. For example, if the reference level is set to -20dB and has a div of 10dB, then grid lines
+        will be shown at -30dB, -40dB, and so on.
+
+    .. attribute:: window
+
+        :type: ShrWindow
+
+        The RBW shape.
+
+    .. attribute:: attenuation
+
+        :type: int
+
+        Amplitude attenuation.
+
+    .. attribute:: gain
+
+        :type: int
+
+        Amplitude gain.
+
+    .. attribute:: detector
+
+        :type: ShrVideoDetector
+
+        Video acquisition detector.
+
+    .. attribute:: processing_units
+
+        :type: ShrVideoUnits
+
+        Video processing units.
+
+    .. attribute:: window_bandwidth
+
+        :type: float
+
+        The window bandwidth in bins.
+
+    Time averaging configuration:
+
+    .. attribute:: decimation_type
+
+        :type: ShrDecimationType
+
+        The downsampling type.
+
+    .. attribute:: decimation_detector
+
+        :type: ShrDecimationDetector
+
+        Downsampling detection.
+
+    .. attribute:: decimation_count
+
+        :type: int
+
+        Amount of downsamples taken.
+
+    .. attribute:: decimation_time_ms
+
+        :type: int
+
+        Downsampling time (ms).
+
+    Frequency averaging configuration:
+
+    .. attribute:: channelize_enable
+
+        :type: bool
+
+        Channelizer enable.
+
+    .. attribute:: channel_output_units
+
+        :type: ShrChannelizerOutputUnits
+
+        Channelizer units.
+
+    .. attribute:: channel_center_hz
+
+        :type: float
+
+        Center frequency of a channel (Hz).
+
+    .. attribute:: channel_width_hz
+
+        :type: float
+
+        Channel spacing (Hz).
