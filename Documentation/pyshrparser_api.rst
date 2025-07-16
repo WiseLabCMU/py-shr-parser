@@ -179,6 +179,9 @@ Classes
 
         Return the sweep data maximum value.
 
+Header Metadata classes
+-----------------------
+
 .. class:: ShrFileHeader
 
     .. attribute:: signature
@@ -364,3 +367,125 @@ Classes
         :type: float
 
         Channel spacing (Hz).
+
+.. class:: ShrSweepHeader
+
+    .. attribute:: timestamp
+
+        :type: int
+
+        The timestamp of the sweep in milliseconds since epoch.
+
+    .. attribute:: latitude
+
+        :type: float
+
+        Latitude.
+
+    .. attribute:: longitude
+
+        :type: float
+
+        Longitude.
+
+    .. attribute:: altitude
+
+        :type: float
+
+        Altitude in meters.
+
+    .. attribute:: adc_overflow
+
+        :type: bool
+
+        Flag indicating that the ADC overflowed.
+
+Exceptions
+----------
+
+.. class:: ShrFileParserException
+
+    Base exception class for ShrFileParser errors
+
+.. class:: FileNotOpenError
+
+    File not open error
+
+Enumerations
+------------
+
+.. class:: ShrScale
+
+    Input reference scales
+
+    Members
+    ^^^^^^^
+    DBM: MilliDecibels (dBm)
+
+    MV: Millivolts (mV)
+
+.. class:: ShrWindow
+
+    Window functions
+
+    Members
+    ^^^^^^^
+    NUTTALL: Nuttall window
+
+    FLATTOP: Flat top window
+
+    GUASSIAN: Gaussian window
+
+.. class:: ShrDecimationType
+
+    Downsampling types
+
+    Members
+    ^^^^^^^
+    TIME: Downsampled with respect to time
+
+    COUNT: Downsampled with respect to counts
+
+.. class:: ShrDecimationDetector
+
+    Decimation detector
+
+    Members
+    ^^^^^^^
+    AVERAGE: Samples are averaged
+
+    MAXIMUM: Maximum taken from samples
+
+.. class:: ShrChannelizerOutputUnits
+
+    Channel serializer units
+
+    Members
+    ^^^^^^^
+    DBM: MilliDecibels (dBm)
+
+    DBMHZ: Power spectral density (dB/MHz)
+
+.. class:: ShrVideoDetector
+
+    Video acquisition detector
+
+    Members
+    ^^^^^^^
+    MIN_MAX: Minimum and/or Maximum captured
+
+    AVERAGE: Average
+
+.. class:: ShrVideoUnits
+
+    Video acquisition units
+
+    Members
+    ^^^^^^^
+    LOG: Log
+
+    VOLTAGE: Voltage
+
+    POWER: Power
+
+    SAMPLE: Sample
