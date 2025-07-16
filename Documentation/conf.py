@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'py-shr-parser'
-copyright = '2025, Tom Schmitz'
-author = 'Tom Schmitz'
+project = 'pySHRParser'
+copyright = '2025, WiSELab-CMU'
+author = 'WiSELab-CMU'
 release = '0.0.0'
 
 # -- General configuration ---------------------------------------------------
@@ -17,6 +17,7 @@ release = '0.0.0'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    'numpydoc'
 ]
 
 templates_path = ['_templates']
@@ -24,6 +25,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
 }
 
 # -- Options for HTML output -------------------------------------------------

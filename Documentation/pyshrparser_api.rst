@@ -128,7 +128,7 @@ Classes
 
 .. class:: ShrSweep
 
-    .. method:: __init__(header: ShrSweepHeader, sweep: np.array, n: int, file_header: ShrFileHeader)
+    .. method:: __init__(header: ShrSweepHeader, sweep: numpy.ndarray, n: int, file_header: ShrFileHeader)
 
         :param header:
             The sweep header.
@@ -154,7 +154,7 @@ Classes
     .. attribute:: sweep
 
         :getter: The sweep data.
-        :type: np.array[np.float32]
+        :type: numpy.ndarray[numpy.single]
 
         Return the sweep data for this specific sweep.
 
@@ -175,7 +175,7 @@ Classes
     .. attribute:: peak
 
         :getter: The sweep data maximum.
-        :type: np.float32
+        :type: numpy.single
 
         Return the sweep data maximum value.
 

@@ -1,2 +1,4 @@
 _build
-*.bat
+*.bat_static
+_templates
+make.bat
