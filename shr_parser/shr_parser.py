@@ -202,3 +202,6 @@ class ShrFileParser:
         if self.__f is not None:
             return self.__header.sweep_count
         return 0
+
+    def __del__(self):
+        self.close()
