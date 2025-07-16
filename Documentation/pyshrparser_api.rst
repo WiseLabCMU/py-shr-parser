@@ -125,3 +125,56 @@ Classes
     .. method:: __exit__(exc_type, exc_val, exc_tb)
 
         Closes the file (exceptions are not handled by ``__exit__``).
+
+.. class:: ShrSweep
+
+    .. method:: __init__(header: ShrSweepHeader, sweep: np.array, n: int, file_header: ShrFileHeader)
+
+        :param header:
+            The sweep header.
+
+        :param sweep:
+            The sweep data.
+
+        :param n:
+            The sweep index.
+
+        :param file_header:
+            Copy of the file header.
+
+        Initializes the data class for the sweep information.
+
+    .. attribute:: header
+
+        :getter: The sweep metadata.
+        :type: ShrSweepHeader
+
+        Return the sweep header for this specific sweep.
+
+    .. attribute:: sweep
+
+        :getter: The sweep data.
+        :type: np.array[np.float32]
+
+        Return the sweep data for this specific sweep.
+
+    .. attribute:: n
+
+        :getter: The sweep index.
+        :type: int
+
+        Return the index that this sweep is associated with.
+
+    .. attribute:: file_header
+
+        :getter: The file header.
+        :type: ShrFileHeader
+
+        Return the file header associated with this sweep.
+
+    .. attribute:: peak
+
+        :getter: The sweep data maximum.
+        :type: np.float32
+
+        Return the sweep data maximum value.
