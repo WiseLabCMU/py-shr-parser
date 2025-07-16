@@ -197,3 +197,8 @@ class ShrFileParser:
     def __iter__(self):
         for n in range(self.__header.sweep_count):
             yield self.get_sweep_n(n)
+
+    def __len__(self):
+        if self.__f is not None:
+            return self.__header.sweep_count
+        return 0
