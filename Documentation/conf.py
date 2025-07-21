@@ -25,6 +25,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'numpy': ('https://numpy.org/doc/stable/', None),
+    'matplotlib': ('https://matplotlib.org/stable/', None)
 }
 
 # -- Options for HTML output -------------------------------------------------

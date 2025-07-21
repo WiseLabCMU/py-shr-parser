@@ -524,3 +524,26 @@ Enumerations
     POWER: Power
 
     SAMPLE: Sample
+
+Functions
+=========
+
+.. module:: shr_parser.visualization
+
+.. function:: spectrogram(sweeps: list[ShrSweep], shading: Literal["flat", "nearest", "gouraud", "auto"] | None = 'auto', cmap: str | matplotlib.colors.Colormap = 'viridis') -> tuple[matplotlib.figure.Figure, matplotlib.axes.Axes]
+
+    Plot a spectrogram from the given list of sweeps.
+
+    :param sweeps: List of sweeps to plot on the spectrogram.
+    :param shading: The fill style for the quadrilateral.
+    :param cmap: The Colormap instance or registered colormap name used to map scalar data to colors.
+
+    :rtype: tuple[matplotlib.figure.Figure, matplotlib.axes.Axes]
+
+.. function:: plot_spectrum(sweep: ShrSweep) -> tuple[matplotlib.figure.Figure, matplotlib.axes.Axes]
+
+    Plot the frequency spectrum of a certain sweep.
+
+    :param sweep: The frequency sweep to plot.
+
+    :rtype: tuple[matplotlib.figure.Figure, matplotlib.axes.Axes]
