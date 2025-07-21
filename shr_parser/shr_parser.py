@@ -73,6 +73,31 @@ class ShrSweep:
         """The maximum value from the sweep"""
         return self.__sweep.max()
 
+    @property
+    def timestamp(self):
+        """The timestamp of the sweep in milliseconds since epoch"""
+        return self.__header.timestamp
+
+    @property
+    def adc_overflow(self):
+        """Flag indicating that the ADC overflowed."""
+        return self.__header.adc_overflow
+
+    @property
+    def f_min(self):
+        """Start frequency of the sweep (Hz)"""
+        return self.__file_header.center_freq_hz - (self.__file_header.span_hz / 2.0)
+
+    @property
+    def f_max(self):
+        """Stop frequency of the sweep (Hz)"""
+        return self.__file_header.center_freq_hz + (self.__file_header.span_hz / 2.0)
+
+    @property
+    def sweep_bins(self):
+        """Number of bins for each sweep"""
+        return self.__file_header.sweep_length
+
     def __repr__(self):
         peak_idx = np.argmax(self.__sweep)
         peak_freq = self.__file_header.first_bin_freq_hz + (peak_idx * self.__file_header.bin_size_hz)
