@@ -14,6 +14,12 @@ def _plot_spectrum(spectrum, f_min, f_max, bins):
     return fig, ax
 
 def plot_spectrum(sweep: ShrSweep):
+    """
+    Plot the frequency spectrum of a certain sweep.
+
+    :param sweep: The frequency sweep to plot.
+    :return: matplotlib figure object and matplotlib Axes object.
+    """
     if not isinstance(sweep, ShrSweep):
         raise TypeError("`sweep` must be of type `ShrSweep`")
 

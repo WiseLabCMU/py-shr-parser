@@ -5,6 +5,8 @@ import datetime as dt
 from ..shr_parser import ShrSweep
 from .units import si_scale
 from ..enumerations import ShrScale
+from typing import Literal
+from matplotlib.colors import Colormap
 
 
 def _plot_spectrogram(arrays, timestamps, f_min, f_max, bins, shading, cmap):
@@ -28,7 +30,17 @@ def _plot_spectrogram(arrays, timestamps, f_min, f_max, bins, shading, cmap):
     return pcm, fig, ax
 
 
-def spectrogram(sweeps: list[ShrSweep], shading='auto', cmap='viridis'):
+def spectrogram(sweeps: list[ShrSweep],
+                shading: Literal["flat", "nearest", "gouraud", "auto"] | None = 'auto',
+                cmap: str | Colormap = 'viridis'):
+    """
+    Plot a spectrogram from the given list of sweeps.
+
+    :param sweeps: List of sweeps to plot on the spectrogram.
+    :param shading: The fill style for the quadrilateral
+    :param cmap: The Colormap instance or registered colormap name used to map scalar data to colors.
+    :return: matplotlib figure object and matplotlib Axes object.
+    """
     if not isinstance(sweeps, list):
         raise TypeError("`sweeps` must be a list of type `ShrSweep`")
     if not sweeps:
