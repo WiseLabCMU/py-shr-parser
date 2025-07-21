@@ -179,8 +179,8 @@ Classes
 
         Return the sweep data maximum value.
 
-Header Metadata classes
------------------------
+Header Metadata Classes
+=======================
 
 .. class:: ShrFileHeader
 
@@ -401,7 +401,7 @@ Header Metadata classes
         Flag indicating that the ADC overflowed.
 
 Exceptions
-----------
+==========
 
 .. class:: ShrFileParserException
 
@@ -412,7 +412,7 @@ Exceptions
     File not open error
 
 Enumerations
-------------
+============
 
 .. class:: ShrScale
 
