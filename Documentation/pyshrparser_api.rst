@@ -179,6 +179,41 @@ Classes
 
         Return the sweep data maximum value.
 
+    .. attribute:: timestamp
+
+        :getter: The sweep timestamp.
+        :type: int
+
+        Return the timestamp of the sweep in milliseconds since last epoch.
+
+    .. attribute:: adc_overflow
+
+        :getter: Flag indicating that the ADC overflowed during the sweep.
+        :type: bool
+
+        Return the flag indicating that the ADC overflowed during the sweep.
+
+    .. attribute:: f_min
+
+        :getter: The starting frequency of the sweep.
+        :type: float
+
+        Return the start frequency of the sweep (Hz).
+
+    .. attribute:: f_max
+
+        :getter: The stop frequency of the sweep.
+        :type: float
+
+        Return the stop frequency of the sweep (Hz).
+
+    .. attribute:: sweep_bins
+
+        :getter: The number of frequency bins for each sweep.
+        :type: int
+
+        Return the number of frequency bins for each sweep.
+
 Header Metadata Classes
 =======================
 
