@@ -60,3 +60,48 @@ load one sweep at a time from the file. If all the sweeps want to be loaded, the
         print(sweep)
 
 By getting all the sweeps, the file can be closed before processing the data.
+
+Plotting a spectrogram
+======================
+
+Sometimes we want to visualize the data that was recorded from the Signal Hound. A common way to visualize RF data is
+through a spectrogram, where the x-axis is the frequency, the y-axis is the time, and the color represents the received
+power. Luckily, the library implements a simple way to visualize the data in this manner:
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import spectrogram
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    if len(sweeps) > 512:
+        spectrogram(sweeps[:512])
+    else:
+        spectrogram(sweeps)
+    plt.show()
+
+.. figure:: figs/spectrogram-example.png
+
+    Output spectrogram
+
+Plotting the spectrum
+=====================
+
+Another common way to visualize RF data is through the frequency spectrum, where the x-axis is the frequency, and the
+y-axis is the received power. The library also implements a simple way to visualize the data in this manner:
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import plot_spectrum
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    sweep = max(sweeps, key=lambda sweep: sweep.peak)
+    plot_spectrum(sweeps[max_idx])
+    plt.show()
+
+.. figure:: figs/spectrum-plot-example.png
+
+    Output spectrum plot
