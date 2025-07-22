@@ -55,7 +55,8 @@ def spectrogram(sweeps: list[ShrSweep],
     pwr_scale = 'dBm' if sweeps[0].file_header.ref_scale == ShrScale.DBM else 'mV'
 
     pcm, fig, ax = _plot_spectrogram([sweep.sweep for sweep in sweeps], [sweep.timestamp for sweep in sweeps],
-                                     sweeps[0].f_min / scale, sweeps[0].f_max / scale, sweeps[0].sweep_bins, shading, cmap)
+                                     sweeps[0].f_min / scale, sweeps[0].f_max / scale, sweeps[0].sweep_bins, shading,
+                                     cmap)
 
     fig.colorbar(pcm, ax=ax, label=f'Power ({pwr_scale})')
 
@@ -76,6 +77,20 @@ def animate_spectrogram(sweeps: list[ShrSweep],
                         repeat_delay: int = 0,
                         repeat: bool = True,
                         title: str | None = None):
+    """
+    Generates an animated spectrogram given the sweep data.
+
+    :param sweeps: List of sweeps to plot on the spectrogram.
+    :param n_display: Number of sweeps to display at any given time.
+    :param step_size: Number of sweeps to remove and add for each frame.
+    :param shading: The fill style for the quadrilateral.
+    :param cmap: The Colormap instance or registered colormap name used to map scalar data to colors.
+    :param interval: Delay between frames in milliseconds.
+    :param repeat_delay: The delay in milliseconds between consecutive animation runs, if repeat is True.
+    :param repeat: Whether the animation repeats when the sequence of frames is completed.
+    :param title: The title of the animation.
+    :return: matplotlib FunAnimation object.
+    """
     if not isinstance(sweeps, list):
         raise TypeError("`sweeps` must be a list of type `ShrSweep`")
     if not sweeps:
@@ -99,7 +114,8 @@ def animate_spectrogram(sweeps: list[ShrSweep],
     for i in range(0, len(sweeps), step_size):
         swp = sweeps[i:i + n_display]
         if len(swp) < n_display:
-            swp += [ShrSweep(ShrSweepHeader(), np.full(shape, min_val, dtype=np.float32), 0, header) for _ in range(n_display - len(swp))]
+            swp += [ShrSweep(ShrSweepHeader(), np.full(shape, min_val, dtype=np.float32), 0, header) for _ in
+                    range(n_display - len(swp))]
         _sweeps.append(swp)
 
     # Initial frame
@@ -125,5 +141,6 @@ def animate_spectrogram(sweeps: list[ShrSweep],
         pcm.set_array(pwr.ravel())
         return [pcm]
 
-    ani = animate.FuncAnimation(fig, update, frames=len(_sweeps), blit=False, interval=interval, repeat_delay=repeat_delay, repeat=repeat)
+    ani = animate.FuncAnimation(fig, update, frames=len(_sweeps), blit=False, interval=interval,
+                                repeat_delay=repeat_delay, repeat=repeat)
     return ani
