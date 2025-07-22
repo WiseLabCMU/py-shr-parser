@@ -62,6 +62,8 @@ def spectrogram(sweeps: list[ShrSweep],
 
     ax.set_xlabel(f'Frequency ({prefix}Hz)')
     ax.set_title('Spectrogram')
+    ax.invert_yaxis()
+    ax.get_yaxis().set_visible(False)
 
     plt.tight_layout()
 
@@ -122,7 +124,8 @@ def animate_spectrogram(sweeps: list[ShrSweep],
     pwr_, time_ = generate_data([swp.sweep for swp in _sweeps[0]], [swp.timestamp for swp in _sweeps[0]])
 
     fig, ax = plt.subplots()
-    pcm = ax.pcolormesh(freq, time_, pwr_, shading=shading, cmap=cmap)
+    pcm = ax.pcolormesh(freq, time_, pwr_, shading=shading, cmap=cmap, vmin=header.ref_level - (header.div * 10),
+                        vmax=header.ref_level)
 
     ax.invert_yaxis()
     ax.get_yaxis().set_visible(False)

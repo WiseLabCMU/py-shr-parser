@@ -105,3 +105,23 @@ y-axis is the received power. The library also implements a simple way to visual
 .. figure:: figs/spectrum-plot-example.png
 
     Output spectrum plot
+
+Animated Spectrogram
+====================
+
+Sometimes, we would like to see how the RF data changes over time. This can be done with the
+``animate_spectrogram()`` function. This will show changes to the spectrogram over time.
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import animate_spectrogram
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    ani = animate_spectrogram(sweeps, 128, 8, cmap='Spectral_r')
+    plt.show()
+
+.. figure:: figs/spectrogram-animated.gif
+
+    Output Spectrogram
