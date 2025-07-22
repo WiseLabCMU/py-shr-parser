@@ -1,2 +1,2 @@
-from .spectrogram import spectrogram
+from .spectrogram import spectrogram, animate_spectrogram
 from .spectrum import plot_spectrum
