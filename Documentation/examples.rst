@@ -82,6 +82,8 @@ power. Luckily, the library implements a simple way to visualize the data in thi
     plt.show()
 
 .. figure:: figs/spectrogram-example.png
+    :class: nofloat
+    :width: 80%
 
     Output spectrogram
 
@@ -103,6 +105,8 @@ y-axis is the received power. The library also implements a simple way to visual
     plt.show()
 
 .. figure:: figs/spectrum-plot-example.png
+    :class: nofloat
+    :width: 80%
 
     Output spectrum plot
 
@@ -122,6 +126,8 @@ Sometimes, we would like to see how the RF data changes over time. This can be d
     ani = animate_spectrogram(sweeps, 128, 8, cmap='Spectral_r')
     plt.show()
 
-.. figure:: figs/spectrogram-animated.gif
+.. only:: html
 
-    Output Spectrogram
+    .. figure:: figs/spectrogram-animated.gif
+
+        Output Spectrogram
