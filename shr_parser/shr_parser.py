@@ -2,7 +2,7 @@ from .enumerations import *
 from .metadata import ShrFileHeader, ShrSweepHeader
 from .exceptions import ShrFileParserException, FileNotOpenError, ShrFileParserWarning
 import struct
-from io import TextIOWrapper
+from io import BufferedReader
 import numpy as np
 from pathlib import Path
 
@@ -123,7 +123,7 @@ class ShrFileParser:
         :param fname: The name of the file to parse.
         """
         self.__fname = fname
-        self.__f: TextIOWrapper[bytes] | None = None
+        self.__f: BufferedReader | None = None
         self.__header = ShrFileHeader()
 
     def _open_file(self, fname: str):
@@ -134,14 +134,20 @@ class ShrFileParser:
 
         bytes_read = self.__f.read(FILE_HEADER_SIZE)
         if len(bytes_read) != FILE_HEADER_SIZE:
+            self.__f.close()
+            self.__f = None
             raise ShrFileParserException("Unable to read header")
 
         self.__header.from_tuple(struct.unpack(FILE_HEADER_PACK, bytes_read))
 
         if self.__header.signature != SHR_FILE_SIGNATURE:
+            self.__f.close()
+            self.__f = None
             raise ShrFileParserException("Invalid SHR file")
 
         if self.__header.version > SHR_FILE_VERSION:
+            self.__f.close()
+            self.__f = None
             raise ShrFileParserException(
                 f"Tried parsing SHR file with version {self.__header.version}. Version {SHR_FILE_VERSION} "
                 f"and lower is supported.")
