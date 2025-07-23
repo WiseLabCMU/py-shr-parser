@@ -1,4 +1,4 @@
-from shr_parser import ShrFileParser, ShrFileParserException, ShrFileParserWarning
+from shr_parser import *
 import pytest
 import pkg_resources
 
@@ -62,9 +62,51 @@ def test_incomplete_file(tmp_path):
 
 
 def test_open_valid_file():
-    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0.shr')
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
 
     cut = ShrFileParser(str(f))
     cut.open()
     assert cut._ShrFileParser__f is not None
     assert not cut._ShrFileParser__f.closed
+
+
+def test_header_file_not_open():
+    cut = ShrFileParser('foo.shr')
+    with pytest.raises(FileNotOpenError):
+        h = cut.header
+
+
+def test_header():
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
+
+    with ShrFileParser(str(f)) as parser:
+        header = parser.header
+        assert isinstance(header, ShrFileHeader)
+
+    assert header.signature == 0xAA10
+    assert header.version == 2
+    assert header.data_offset == 472
+    assert header.sweep_count == 417
+    assert header.sweep_length == 16386
+    assert header.first_bin_freq_hz == 2.9955e9
+    assert header.bin_size_hz == 1220.703125
+    assert header.center_freq_hz == 3.0055e9
+    assert header.span_hz == 20e6
+    assert header.rbw_hz == 10e3
+    assert header.vbw_hz == 10e3
+    assert header.ref_level == -20.0
+    assert header.ref_scale == ShrScale.DBM
+    assert header.div == 10.0
+    assert header.window == ShrWindow.FLATTOP
+    assert header.attenuation == 0
+    assert header.gain == 0
+    assert header.detector == ShrVideoDetector.AVERAGE
+    assert header.processing_units == ShrVideoUnits.POWER
+    assert header.window_bandwidth == 8.192
+    assert header.decimation_type == ShrDecimationType.COUNT
+    assert header.decimation_count == 1
+    assert header.decimation_time_ms == 1000.0
+    assert not header.channelize_enable
+    assert header.channel_output_units == ShrChannelizerOutputUnits.DBM
+    assert header.channel_center_hz == 100e6
+    assert header.channel_width_hz == 20e6
