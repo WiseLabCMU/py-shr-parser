@@ -1,5 +1,4 @@
 .idea/
-*.shr
 build/
 py_shr_parser.egg-info
 __pycache__/
