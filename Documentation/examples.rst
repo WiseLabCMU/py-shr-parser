@@ -82,6 +82,8 @@ power. Luckily, the library implements a simple way to visualize the data in thi
     plt.show()
 
 .. figure:: figs/spectrogram-example.png
+    :class: nofloat
+    :width: 80%
 
     Output spectrogram
 
@@ -103,5 +105,52 @@ y-axis is the received power. The library also implements a simple way to visual
     plt.show()
 
 .. figure:: figs/spectrum-plot-example.png
+    :class: nofloat
+    :width: 80%
 
     Output spectrum plot
+
+Animated Spectrogram
+====================
+
+Sometimes, we would like to see how the RF data changes over time. This can be done with the
+``animate_spectrogram()`` function. This will show changes to the spectrogram over time.
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import animate_spectrogram
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    ani = animate_spectrogram(sweeps, 128, 8, cmap='Spectral_r')
+    plt.show()
+
+.. only:: html
+
+    .. figure:: figs/spectrogram-animated.gif
+
+        Output Spectrogram
+
+Animated Spectrum
+=================
+
+Another way RF data is represented over time is through changes in the frequency spectrum. In `Plotting the spectrum`_,
+a snapshot of the spectrum is plotted, however, there is a way to animate the changes in the spectrum over time by using
+the ``animate_spectrum()`` function. This will show the changes in the spectrum over time.
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import animate_spectrum
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    ani = animate_spectrum(sweeps)
+    plt.show()
+
+.. only:: html
+
+    .. figure:: figs/spectrum-animated.gif
+
+        Output Spectrum

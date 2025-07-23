@@ -17,3 +17,4 @@ Contents:
    pyshrparser
    pyshrparser_api
    examples
+   appendix

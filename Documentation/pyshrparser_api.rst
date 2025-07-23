@@ -547,3 +547,37 @@ Functions
     :param sweep: The frequency sweep to plot.
 
     :rtype: tuple[matplotlib.figure.Figure, matplotlib.axes.Axes]
+
+.. function:: animate_spectrogram(sweeps: List[ShrSweep], n_display: int = 256, step_size: int = 1, shading: Literal["flat", "nearest", "gouraud", "auto"] | None = 'auto', cmap: str | Colormap = 'viridis', interval: int = 200, repeat_delay: int = 0, repeat: bool = True, title: str | None = None) -> matplotlib.animation.FuncAnimation
+
+    Plot a spectrogram and animate it over time.
+
+    :param sweep: List of sweeps to plot on the spectrogram.
+    :param n_display: Number of sweeps to display at any given time (Default: ``256``).
+    :param step_size: Number of sweeps to remove and add for each frame (Default: ``1``).
+    :param shading: The fill style for the quadrilateral.
+    :param cmap: The Colormap instance or registered colormap name used to map scalar data to colors.
+    :param interval: Delay between frames in milliseconds (Default: ``200``).
+    :param repeat_delay: The delay in milliseconds between consecutive animation runs, if repeat is True (Default: ``0``).
+    :param repeat: Whether the animation repeats when the sequence of frames is completed (Default: ``True``)
+    :param title: The title of the animation (Default: ``None``).
+    :rtype: matplotlib.animation.FuncAnimation
+
+    .. note::
+
+        The return value must be saved in a variable.
+
+.. function:: animate_spectrum(sweeps: list[ShrSweep], title: str | None = None, interval: int = 200, repeat_delay: int = 0, repeat: bool = True) -> matplotlib.animate.FuncAnimate:
+
+    Plot the spectrum and animate it over time.
+
+    :param sweeps: The frequency sweeps to animate.
+    :param title: The title of the figure.
+    :param interval: Delay between frames in milliseconds (Default: ``200``)
+    :param repeat_delay: The delay in milliseconds between consecutive animation runs, if repeat is True (Default: ``0``).
+    :param repeat: Whether the animation repeats when the sequence of frames is completed (Default: ``True``).
+    :rtype: matplotlib.animation.FuncAnimation
+
+    .. note::
+
+        The return value must be saved in a variable.
