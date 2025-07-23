@@ -131,3 +131,26 @@ Sometimes, we would like to see how the RF data changes over time. This can be d
     .. figure:: figs/spectrogram-animated.gif
 
         Output Spectrogram
+
+Animated Spectrum
+=================
+
+Another way RF data is represented over time is through changes in the frequency spectrum. In `Plotting the spectrum`_,
+a snapshot of the spectrum is plotted, however, there is a way to animate the changes in the spectrum over time by using
+the ``animate_spectrum()`` function. This will show the changes in the spectrum over time.
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    from shr_parser.visualization import animate_spectrum
+    import matplotlib.pyplot as plt
+    with ShrFileParser('foo.shr') as f:
+        sweeps = f.get_all_sweeps()
+    ani = animate_spectrum(sweeps)
+    plt.show()
+
+.. only:: html
+
+    .. figure:: figs/spectrum-animated.gif
+
+        Output Spectrum
