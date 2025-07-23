@@ -148,3 +148,30 @@ def test_get_sweep_n_corrupted(tmp_path):
 
     with pytest.raises(ValueError):
         cut.get_sweep_n(100)
+
+
+def test_get_all_sweeps():
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
+
+    with ShrFileParser(str(f)) as parser:
+        sweeps = parser.get_all_sweeps()
+        assert len(sweeps) == 417
+    # No need to test errors since they are handled by `get_sweep_n()` test cases
+
+
+def test_iter():
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
+
+    with ShrFileParser(str(f)) as parser:
+        i = 0
+        for _ in parser:
+            i += 1
+        assert i == 417
+    # Exceptions that can be thrown here are handled by other test cases
+
+
+def test_len():
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
+
+    with ShrFileParser(str(f)) as parser:
+        assert len(parser) == 417
