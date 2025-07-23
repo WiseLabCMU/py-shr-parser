@@ -110,3 +110,41 @@ def test_header():
     assert header.channel_output_units == ShrChannelizerOutputUnits.DBM
     assert header.channel_center_hz == 100e6
     assert header.channel_width_hz == 20e6
+
+
+def test_get_sweep_n_not_open():
+    cut = ShrFileParser('foo.shr')
+    with pytest.raises(FileNotOpenError):
+        cut.get_sweep_n(0)
+
+
+def test_get_sweep_n_bounds():
+    f = pkg_resources.resource_filename(__name__, 'test_files/sweep0v2.shr')
+
+    with ShrFileParser(str(f)) as parser:
+        with pytest.raises(ValueError):
+            parser.get_sweep_n(-1)
+        with pytest.raises(ValueError):
+            parser.get_sweep_n(417)
+
+        parser.get_sweep_n(0)
+        parser.get_sweep_n(416)
+
+
+def test_get_sweep_n_corrupted(tmp_path):
+    f = tmp_path / "incomplete.shr"
+    f.write_bytes(
+        b"\x10\xAA\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00" + (
+                    b"\x00" * 448))
+
+    cut = ShrFileParser(str(f))
+    try:
+        cut.open()
+    except ShrFileParserWarning:
+        pass
+
+    with pytest.raises(ShrFileParserException):
+        cut.get_sweep_n(0)
+
+    with pytest.raises(ValueError):
+        cut.get_sweep_n(100)

@@ -164,7 +164,7 @@ class ShrFileParser:
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.__f.close()
+        self.close()
 
     def open(self):
         """
@@ -217,14 +217,14 @@ class ShrFileParser:
         header_bytes: bytes = self.__f.read(SWEEP_HEADER_SIZE)
         sweep_bytes: bytes = self.__f.read(4 * self.__header.sweep_length)
 
-        header = ShrSweepHeader()
-        header.from_tuple(struct.unpack(SWEEP_HEADER_PACK, header_bytes))
-        sweep = np.frombuffer(sweep_bytes, dtype=np.float32)
-
         if len(header_bytes) != SWEEP_HEADER_SIZE:
             raise ShrFileParserException("Invalid sweep header size")
         if len(sweep_bytes) != sweep_size:
             raise ShrFileParserException("Invalid sweep size")
+
+        header = ShrSweepHeader()
+        header.from_tuple(struct.unpack(SWEEP_HEADER_PACK, header_bytes))
+        sweep = np.frombuffer(sweep_bytes, dtype=np.float32)
 
         return ShrSweep(header, sweep, n, self.__header)
 
