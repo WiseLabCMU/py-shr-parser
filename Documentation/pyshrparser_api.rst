@@ -566,3 +566,18 @@ Functions
     .. note::
 
         The return value must be saved in a variable.
+
+.. function:: animate_spectrum(sweeps: list[ShrSweep], title: str | None = None, interval: int = 200, repeat_delay: int = 0, repeat: bool = True) -> matplotlib.animate.FuncAnimate:
+
+    Plot the spectrum and animate it over time.
+
+    :param sweeps: The frequency sweeps to animate.
+    :param title: The title of the figure.
+    :param interval: Delay between frames in milliseconds (Default: ``200``)
+    :param repeat_delay: The delay in milliseconds between consecutive animation runs, if repeat is True (Default: ``0``).
+    :param repeat: Whether the animation repeats when the sequence of frames is completed (Default: ``True``).
+    :rtype: matplotlib.animation.FuncAnimation
+
+    .. note::
+
+        The return value must be saved in a variable.

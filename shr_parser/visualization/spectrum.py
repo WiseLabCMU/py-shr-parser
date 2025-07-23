@@ -48,6 +48,16 @@ def plot_spectrum(sweep: ShrSweep):
 
 def animate_spectrum(sweeps: list[ShrSweep], title: str | None = None, interval: int = 200, repeat_delay: int = 0,
                      repeat: bool = True):
+    """
+    Animate the spectrum changes over time.
+
+    :param sweeps: The frequency sweeps to animate.
+    :param title: The title of the figure.
+    :param interval: Delay between frames in milliseconds.
+    :param repeat_delay: The delay in milliseconds between consecutive animation runs, if repeat is True.
+    :param repeat: Whether the animation repeats when the sequence of frames is completed.
+    :return: matplotlib FunAnimation object.
+    """
     if not isinstance(sweeps, list):
         raise TypeError("`sweeps` must be a list of type `ShrSweep`")
     if not sweeps:
