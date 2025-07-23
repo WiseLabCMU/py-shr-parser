@@ -1,4 +1,4 @@
 from .shr_parser import ShrSweep, ShrFileParser
 from .enumerations import ShrScale, ShrWindow, ShrDecimationDetector, ShrVideoDetector, ShrVideoUnits, ShrDecimationType, ShrChannelizerOutputUnits
-from .exceptions import ShrFileParserException, FileNotOpenError
+from .exceptions import ShrFileParserException, FileNotOpenError, ShrFileParserWarning
 from .metadata import ShrSweepHeader, ShrFileHeader

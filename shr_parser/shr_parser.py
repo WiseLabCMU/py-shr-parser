@@ -1,9 +1,10 @@
 from .enumerations import *
 from .metadata import ShrFileHeader, ShrSweepHeader
-from .exceptions import ShrFileParserException, FileNotOpenError
+from .exceptions import ShrFileParserException, FileNotOpenError, ShrFileParserWarning
 import struct
 from io import TextIOWrapper
 import numpy as np
+from pathlib import Path
 
 SHR_FILE_SIGNATURE = 0xAA10
 SHR_FILE_VERSION = 0x2
@@ -35,6 +36,7 @@ class ShrSweep:
     """
     Frequency sweep information.
     """
+
     def __init__(self, header: ShrSweepHeader, sweep: np.array, n: int, file_header: ShrFileHeader):
         """
         Initializer.
@@ -114,6 +116,7 @@ class ShrFileParser:
     :raises FileNotFoundError: If unable to open file for reading.
     :raises FileNotOpenError: If the file is not open.
     """
+
     def __init__(self, fname: str):
         """
         Initializer.
@@ -142,6 +145,13 @@ class ShrFileParser:
             raise ShrFileParserException(
                 f"Tried parsing SHR file with version {self.__header.version}. Version {SHR_FILE_VERSION} "
                 f"and lower is supported.")
+
+        sweep_data_size = Path(fname).stat().st_size - FILE_HEADER_SIZE
+        sz_per_sweep = (4 * self.__header.sweep_length) + SWEEP_HEADER_SIZE
+
+        if sweep_data_size != (sz_per_sweep * self.__header.sweep_count):
+            raise ShrFileParserWarning(f"{fname} reported {self.__header.sweep_count} sweeps in the file. "
+                                       f"Found {sweep_data_size / sz_per_sweep} sweeps instead!")
 
     def __enter__(self):
         self._open_file(self.__fname)

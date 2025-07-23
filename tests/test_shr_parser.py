@@ -1,4 +1,4 @@
-from shr_parser import ShrFileParser, ShrFileParserException
+from shr_parser import ShrFileParser, ShrFileParserException, ShrFileParserWarning
 import pytest
 
 
@@ -48,6 +48,6 @@ def test_incomplete_file(tmp_path):
     f = tmp_path / "incomplete.shr"
     f.write_bytes(b"\x10\xAA\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00" + (b"\x00" * 448))
 
-    with pytest.raises(ShrFileParserException):
+    with pytest.raises(ShrFileParserWarning):
         cut = ShrFileParser(str(f))
         cut.open()
