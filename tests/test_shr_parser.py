@@ -175,3 +175,12 @@ def test_len():
 
     with ShrFileParser(str(f)) as parser:
         assert len(parser) == 417
+
+
+def test_no_sweeps(tmp_path):
+    f = tmp_path / "no-sweeps.shr"
+    f.write_bytes(b"\x10\xAA\x02\x00\x00\x00\x00\x00\xD8\x01\x00\x00\x00\x00\x00\x00" + (b"\x00" * 456))
+
+    with ShrFileParser(str(f)) as parser:
+        assert len(parser) == 0
+        assert not parser.get_all_sweeps()
