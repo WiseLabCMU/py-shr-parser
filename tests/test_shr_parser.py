@@ -52,7 +52,9 @@ def test_bad_version(tmp_path):
 
 def test_incomplete_file(tmp_path):
     f = tmp_path / "incomplete.shr"
-    f.write_bytes(b"\x10\xAA\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00" + (b"\x00" * 448))
+    f.write_bytes(
+        b"\x10\xAA\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00" + (
+                    b"\x00" * 448))
 
     cut = ShrFileParser(str(f))
     with pytest.raises(ShrFileParserWarning):
@@ -135,7 +137,7 @@ def test_get_sweep_n_corrupted(tmp_path):
     f = tmp_path / "incomplete.shr"
     f.write_bytes(
         b"\x10\xAA\x02\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x10\x00\x00\x00\x00\x10\x00\x00" + (
-                    b"\x00" * 448))
+                b"\x00" * 448))
 
     cut = ShrFileParser(str(f))
     try:
