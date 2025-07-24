@@ -2,6 +2,15 @@
 Appendix
 ========
 
+Related Software
+================
+* shr-parser_: A Rust library for parsing SHR files.
+* shr-parser-py_: Another Python package for parsing SHR files written in Rust. This project is no longer
+  maintained at the time of writing.
+
+.. _shr-parser: https://github.com/Xerrion/shr_parser
+.. _shr-parser-py: https://pypi.org/project/shr-parser/
+
 License
 =======
 Copyright (c) 2025, WiSELab-CMU

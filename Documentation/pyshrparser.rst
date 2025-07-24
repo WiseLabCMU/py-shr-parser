@@ -34,12 +34,12 @@ This installs a package that can be used from Python (``import shr_parser``).
 To install for all users on the system, administrator
 rights (root) may be required.
 
-From PyPI (Not published yet. This doesn't work yet)
+From PyPI
 ----------------------------------------------------
 pyshrparser can be installed from PyPI::
 
-    pip install pyshrparser
-    python3 -m pip install pyshrparser
+    pip install py-shr-parser
+    python3 -m pip install py-shr-parser
 
 Developers also may be interested to get the source archive, because it
 contains examples, tests and this documentation.
