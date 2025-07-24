@@ -14,10 +14,24 @@ authors = [
 description = "Python library for parsing Signal Hound SHR files"
 requires-python = ">=3.8"
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
 ]
 dependencies = [
     "numpy",
     "matplotlib",
+]
+license = "BSD-3-Clause"
+keywords = ["SHR", "Signal Hound", ""]
+
+[project.urls]
+Repository = "https://github.com/WiseLabCMU/py-shr-parser"
+"Bug Tracker" = "https://github.com/WiseLabCMU/py-shr-parser/issues"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
 ]
