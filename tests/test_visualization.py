@@ -70,4 +70,3 @@ def test_animate_spectrum_errors():
 
     with pytest.raises(TypeError):
         animate_spectrum(sweeps)
-    assert False
