@@ -3,30 +3,31 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 
 [project]
 name = "py-shr-parser"
-version = "0.0.0"
+version = "1.0.0"
 authors = [
     { name = "Tom Schmitz", email="tschmitz@andrew.cmu.edu" },
 ]
 description = "Python library for parsing Signal Hound SHR files"
 requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent"
+    "Operating System :: OS Independent",
 ]
 dependencies = [
     "numpy",
     "matplotlib",
 ]
 license = "BSD-3-Clause"
-keywords = ["SHR", "Signal Hound", ""]
+keywords = ["SHR", "Signal Hound",]
+readme = "README.rst"
 
 [project.urls]
-Repository = "https://github.com/WiseLabCMU/py-shr-parser"
+Homepage = "https://github.com/WiseLabCMU/py-shr-parser"
 "Bug Tracker" = "https://github.com/WiseLabCMU/py-shr-parser/issues"
 
 [tool.pytest.ini_options]

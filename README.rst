@@ -15,16 +15,25 @@ Documentation
 -------------
 For API documentation, usage and examples, see the files in the "Documentation" directory. 
 The ".rst" files can be read in any text editor or being converted to HTML or PDF
-using Sphinx.
+using Sphinx_. Examples can be found in the documentation and tests.
 
-Examples
---------
-Examples do not exist yet...
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
 
 Installation
 ------------
-Eventually will be published on PyPl. Currently download the repo and run
 
 .. code-block:: none
 
-    pip install <path to root of this repo>
+    pip install py-shr-parser
+
+Basic Example
+-------------
+This shows how to open an SHR file and load all the sweep data.
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    with ShrFileParser("foo.shr") as parser:
+        sweeps = parser.get_all_sweeps()
+
+The above example is very basic. For more advanced examples, please refer to the Documentation.
