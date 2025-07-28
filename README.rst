@@ -1,6 +1,6 @@
-===========================
-py-shr-parser
-===========================
+==============================
+py-shr-parser  |Unit Testing|
+==============================
 
 Overview
 --------
@@ -37,3 +37,7 @@ This shows how to open an SHR file and load all the sweep data.
         sweeps = parser.get_all_sweeps()
 
 The above example is very basic. For more advanced examples, please refer to the Documentation.
+
+.. |Unit Testing| image:: https://github.com/WiseLabCMU/py-shr-parser/actions/workflows/unittest.yml/badge.svg
+    :target: https://github.com/WiseLabCMU/py-shr-parser/actions/workflows/unittest.yml
+    :alt: Test Status
