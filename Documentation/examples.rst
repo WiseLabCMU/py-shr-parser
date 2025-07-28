@@ -154,3 +154,21 @@ the ``animate_spectrum()`` function. This will show the changes in the spectrum 
     .. figure:: figs/spectrum-animated.gif
 
         Output Spectrum
+
+Converting to CSV
+=================
+
+Sometimes, you just want to extract the data from the file so it can be processed by another program. Unfortunately, the
+library provides no way of doing that natively, however, it is fairly easy to do yourself:
+
+.. code-block:: python
+
+    from shr_parser import ShrFileParser
+    import numpy as np
+    import csv
+    with ShrFileParser('foo.shr') as parser:
+        sweeps = parser.get_all_sweeps()
+    sweeps = [sweep.sweep for sweep in sweeps]
+    with open('output.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerows(np.vstack(sweeps).tolist())
