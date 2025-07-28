@@ -10,7 +10,7 @@ permissions:
 jobs:
   package:
     name: Package
-    uses: ./.github/workflows.package.yml
+    uses: ./.github/workflows/package.yml
 
   release:
     name: Release
