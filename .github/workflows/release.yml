@@ -22,7 +22,6 @@ jobs:
       url: https://test.pypi.org/project/py-shr-parser-tomschmitz/
 
     permissions:
-      contents: write
       id-token: write
 
     steps:
