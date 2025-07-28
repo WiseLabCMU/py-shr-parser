@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 
 [project]
-name = "py-shr-parser-tomschmitz"
+name = "py-shr-parser"
 version = "1.0.0"
 authors = [
     { name = "Tom Schmitz", email="tschmitz@andrew.cmu.edu" },

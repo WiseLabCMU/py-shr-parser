@@ -1,8 +1,6 @@
 name: Release
 
-on: [push]
-#  release:
-#    types: [published]
+on: [release]
 
 permissions:
   contents: read
@@ -19,7 +17,7 @@ jobs:
 
     environment:
       name: pypi
-      url: https://test.pypi.org/project/py-shr-parser-tomschmitz/
+      url: https://pypi.org/project/py-shr-parser/
 
     permissions:
       id-token: write
@@ -33,5 +31,3 @@ jobs:
 
       - name: Publish Package to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
