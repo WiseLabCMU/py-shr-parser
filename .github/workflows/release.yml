@@ -17,7 +17,9 @@ jobs:
     needs: [package]
     runs-on: ubuntu-latest
 
-    environment: pypi
+    environment:
+      name: pypi
+      url: https://test.pypi.org/project/py-shr-parser-tomschmitz/
 
     permissions:
       contents: write
@@ -30,10 +32,5 @@ jobs:
           name: python-package-distributions
           path: dist/
 
-      - name: Upload release assets
-        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
-        with:
-          files: dist/*.whl
-
-      - name: Publish package to PyPI
-        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # release/v1
+      - name: Publish Package to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
